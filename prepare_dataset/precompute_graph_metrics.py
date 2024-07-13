@@ -75,4 +75,6 @@ snap_graph = snap.LoadEdgeList(snap.PUNGraph, str(config.DATASET_DIR / 'edge_lis
 node_ids = np.sort([node.GetId() for node in snap_graph.Nodes()])
   
 # calculate graph metrics
-calculate_stats()
+if __name__ == '__main__':
+    calculate_stats()
+

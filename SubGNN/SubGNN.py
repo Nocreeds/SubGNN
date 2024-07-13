@@ -46,7 +46,7 @@ import networkx as nx
 
 
 # Our Methods
-sys.path.insert(0, '..') # add config to path
+sys.path.insert(0, '../SubGNN') # add config to path
 import config
 import subgraph_utils
 from subgraph_mpn import SG_MPN
@@ -95,8 +95,10 @@ class SubGNN(pl.LightningModule):
         embedding_path: str, similarities_path: str, shortest_paths_path:str,
         degree_dict_path: str, ego_graph_path: str):
         super(SubGNN, self).__init__()
+        
+        
 
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.to(torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
 
         #dictionary of hyperparameters
         self.hparams = hparams  

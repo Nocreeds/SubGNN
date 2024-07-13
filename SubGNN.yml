@@ -1,4 +1,4 @@
-name: subGemb_update
+name: sgnn
 channels:
   - pytorch
   - conda-forge
@@ -219,5 +219,5 @@ dependencies:
     - xlrd==1.2.0
     - xlsxwriter==1.2.8
     - zipp==3.1.0
-prefix: /home/emilya/.conda/envs/subGemb_update
+prefix: /home/emilya/.conda/envs/sgnn
 

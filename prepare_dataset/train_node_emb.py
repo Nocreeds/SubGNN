@@ -13,7 +13,7 @@ import utils
 import torch
 from torch_geometric.utils.convert import to_networkx, to_scipy_sparse_matrix
 from torch_geometric.data import Data, DataLoader, NeighborSampler
-if config.MINIBATCH == "GraphSaint": from torch_geometric.data import GraphSAINTRandomWalkSampler
+if config.MINIBATCH == "GraphSaint": from torch_geometric.loader import GraphSAINTRandomWalkSampler
 from torch_geometric.utils import negative_sampling 
 
 # Global Variables
@@ -157,7 +157,7 @@ def generate_emb():
             log_f.write(str(curr_hyperparameters) + "\n")
 
             # Set up
-            model = mdl.TrainNet(all_data.x.shape[1], curr_hyperparameters['hidden'], curr_hyperparameters['output'], config.CONV.lower().split("_")[1], curr_hyperparameters['dropout']).to(device)
+            model = mdl.TrainNet(all_data.x.shape[1], curr_hyperparameters['hidden'], curr_hyperparameters['output'],config.CONV.lower().split("_")[-1], curr_hyperparameters['dropout']).to(device)
             optimizer = torch.optim.Adam(model.parameters(), lr = curr_hyperparameters['lr'], weight_decay = curr_hyperparameters['wd'])
 
             # Train model
